@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address Book</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="alertPlaceholder" class="mt-2"></div>
+    <div class="container mt-5">
+        <h2>Address Book</h2>
+        <!-- Form for Adding/Editing Contacts -->
+        <form id="contactForm">
+            <input type="hidden" id="contactId" name="id">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required minlength="2">
+            </div>
+            <div class="form-group">
+                <label for="first_name">First Name:</label>
+                <input type="text" class="form-control" id="first_name" name="first_name" required minlength="2">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="street">Street:</label>
+                <input type="text" class="form-control" id="street" name="street" required>
+            </div>
+            <div class="form-group">
+                <label for="zip_code">Zip Code:</label>
+                <input type="text" class="form-control" id="zip_code" name="zip_code" required pattern="\d*">
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <select class="form-control" id="city" name="city_id" required>
+                    <option value="">Please select</option>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear</button>
+        </form>
+
+        <!-- Table to Display Contacts -->
+        <table class="table table-striped mt-4">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>First Name</th>
+                    <th>Email</th>
+                    <th>Street</th>
+                    <th>Zip Code</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody id="contactList">
+                <!-- Contacts will be populated here by JavaScript -->
+            </tbody>
+        </table>
+
+        <!-- Export Buttons -->
+        <button class="btn btn-info" onclick="exportData('xml')">Export XML</button>
+        <button class="btn btn-info" onclick="exportData('json')">Export JSON</button>
+    </div>
+
+    <style>
+        .clickable-row {
+            cursor: pointer;
+        }
+    </style>
+    
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Script to interact with the backend -->
+    <script src="app.js"></script>
+</body>
+</html>
